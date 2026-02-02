@@ -1,26 +1,280 @@
 @import "tailwindcss";
 
+/*
+  — Identité visuelle ZUKUNFT TECH —
+  Brand-Aqua: Electric Aqua #20F0FF
+  Brand-Blue: Bright Futuristic Blue #2C3EFA
+  Background: Noir profond #050505
+  Gradient primaire: Aqua → Blue
+*/
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Couleurs de marque */
+  --brand-aqua: #20f0ff;
+  --brand-aqua-rgb: 32 240 255;
+  --brand-blue: #2c3efa;
+  --brand-blue-rgb: 44 62 250;
+  /* Gradient primaire (Aqua → Blue) */
+  --gradient-primary: linear-gradient(to right, var(--brand-aqua), var(--brand-blue));
+  --gradient-primary-vertical: linear-gradient(to bottom, var(--brand-aqua), var(--brand-blue));
+
+  /* Primary = Brand-Aqua (alias pour composants) */
+  --primary: var(--brand-aqua);
+  --primary-hover: #5ff5ff;
+  --primary-deep: var(--brand-blue);
+  --accent-ocean: var(--brand-aqua);
+  --accent-ocean-light: var(--primary-hover);
+  --accent-ocean-dark: var(--brand-blue);
+
+  /* Surfaces — fond noir profond #050505 */
+  --bg-page: #050505;
+  --bg-surface: #0c0c0f;
+  --bg-surface-elevated: #141418;
+  --bg-card: var(--bg-surface);
+  --glass-bg: rgba(12, 12, 15, 0.85);
+  --glass-border: rgba(20, 20, 24, 0.9);
+
+  /* Texte */
+  --foreground: #fafafa;
+  --text-secondary: #d4d4d8;
+  --muted: #a1a1aa;
+  --border: #27272a;
+  --border-subtle: #1a1a1d;
+  /* Transitions */
+  --ease-out-smooth: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-hover: 0.25s;
+  --duration-focus: 0.2s;
 }
 
 @theme inline {
-  --color-background: var(--background);
+  --color-background: var(--bg-page);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  /* Couleurs de marque ZUKUNFT TECH */
+  --color-brand-aqua: var(--brand-aqua);
+  --color-brand-blue: var(--brand-blue);
+  --color-ocean: var(--brand-aqua);
+  --color-ocean-light: var(--primary-hover);
+  --color-ocean-dark: var(--brand-blue);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background: var(--bg-page);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Titres — police display moderne, grasse, légèrement étendue (wide) */
+.text-hero {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-size: clamp(2.5rem, 6vw + 1rem, 4.5rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+}
+
+.text-section {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-size: clamp(1.875rem, 3vw + 0.5rem, 2.75rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+
+.text-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+/* Corps de texte — lisibilité, espacement généreux */
+.text-body {
+  font-size: 1rem;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  color: var(--text-secondary);
+}
+.text-body-muted {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+
+.radius-sm { border-radius: 8px; }
+.radius-md { border-radius: 12px; }
+.radius-lg { border-radius: 18px; }
+.radius-xl { border-radius: 20px; }
+.radius-2xl { border-radius: 1rem; }
+
+.hover-accent {
+  cursor: pointer;
+  transition: color var(--duration-hover) var(--ease-out-smooth),
+    border-color var(--duration-hover) var(--ease-out-smooth),
+    background-color var(--duration-hover) var(--ease-out-smooth),
+    box-shadow var(--duration-hover) var(--ease-out-smooth),
+    transform var(--duration-hover) var(--ease-out-smooth);
+}
+.hover-accent:hover {
+  color: var(--primary-hover);
+}
+
+/* Gradient primaire de marque (Aqua → Blue) */
+.bg-brand-gradient {
+  background: var(--gradient-primary);
+}
+.bg-brand-gradient-vertical {
+  background: var(--gradient-primary-vertical);
+}
+.text-brand-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Titres importants — dégradé progressif (text-clip) avec effet fluide */
+.text-title-gradient {
+  background: linear-gradient(
+    90deg,
+    var(--brand-aqua) 0%,
+    var(--brand-aqua) 25%,
+    var(--brand-blue) 75%,
+    var(--brand-blue) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 8s ease-in-out infinite;
+}
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+/* Pattern de fond "Z" du logo — sections de transition (opacité très faible) */
+.bg-pattern-z {
+  position: relative;
+}
+.bg-pattern-z::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath d='M0 10h80v6L14 74H0v-6h66L0 16v-6z' fill='%2320f0ff' fill-opacity='0.035'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 80px 80px;
+  opacity: 1;
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+}
+a:hover, button:hover {
+  cursor: pointer;
+}
+
+/* Hover — cartes (lift + ombre) */
+.hover-card {
+  transition: transform var(--duration-hover) var(--ease-out-smooth),
+    box-shadow 0.3s var(--ease-out-smooth),
+    border-color var(--duration-hover) var(--ease-out-smooth);
+}
+.hover-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgb(var(--brand-aqua-rgb) / 0.2);
+}
+
+/* Hover — boutons */
+.hover-btn {
+  transition: transform var(--duration-hover) var(--ease-out-smooth),
+    box-shadow 0.3s var(--ease-out-smooth),
+    background-color var(--duration-hover) var(--ease-out-smooth);
+}
+.hover-btn:hover {
+  transform: translateY(-1px);
+}
+.hover-btn:active {
+  transform: translateY(0);
+}
+
+/* Hover — liens */
+.hover-link {
+  transition: color var(--duration-hover) var(--ease-out-smooth),
+    opacity var(--duration-hover) var(--ease-out-smooth);
+}
+.hover-link:hover {
+  color: var(--primary-hover);
+}
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Glassmorphism avec liseré aux couleurs de la charte (Aqua/Blue) */
+.glass-brand {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgb(var(--brand-aqua-rgb) / 0.12);
+  box-shadow: inset 0 1px 0 rgb(var(--brand-aqua-rgb) / 0.06);
+}
+
+.glass-strong {
+  background: rgba(12, 12, 15, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgb(var(--brand-aqua-rgb) / 0.1);
+}
+
+/* Bouton CTA principal — dégradé Aqua-Blue + glow au survol */
+.btn-cta {
+  background: var(--gradient-primary);
+  color: white;
+  font-weight: 600;
+  transition: transform var(--duration-hover) var(--ease-out-smooth),
+    box-shadow 0.4s var(--ease-out-smooth);
+}
+.btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgb(var(--brand-aqua-rgb) / 0.45),
+    0 0 56px rgb(var(--brand-blue-rgb) / 0.25);
+}
+.btn-cta:active {
+  transform: translateY(0);
+}
+.btn-cta:focus-visible {
+  outline: 2px solid var(--brand-aqua);
+  outline-offset: 2px;
+}
+
+/* Bordures fines avec liseré charte */
+.border-brand-subtle {
+  border-color: rgb(var(--brand-aqua-rgb) / 0.12);
+}
+.border-b-brand {
+  border-bottom: 1px solid rgb(var(--brand-aqua-rgb) / 0.12);
 }
