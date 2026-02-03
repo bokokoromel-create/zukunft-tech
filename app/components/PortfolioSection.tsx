@@ -52,7 +52,7 @@ const cardReveal = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] as const },
   },
 };
 
@@ -117,7 +117,7 @@ export default function PortfolioSection() {
                     }}
                     transition={{
                       duration: 0.35,
-                      ease: [0.33, 1, 0.68, 1],
+                      ease: [0.33, 1, 0.68, 1] as const,
                     }}
                     className="flex flex-col gap-2"
                   >

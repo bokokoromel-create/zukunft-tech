@@ -45,7 +45,7 @@ function AnimatedCounter({
     const id = setTimeout(() => {
       animate(motionValue, value, {
         duration,
-        ease: [0.22, 0.61, 0.36, 1],
+        ease: [0.22, 0.61, 0.36, 1] as const,
       });
     }, staggerDelay * 1000);
     return () => clearTimeout(id);
@@ -79,7 +79,7 @@ export default function AboutSection() {
             initial={{ opacity: 0, x: -24, filter: "blur(8px)" }}
             whileInView={{ opacity: 1, x: 0, filter: "blur(2px)" }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const }}
             className="relative order-2 flex min-h-[280px] items-center justify-center lg:order-1 lg:min-h-[360px]"
           >
             <div className="relative aspect-square w-full max-w-[320px] lg:max-w-[380px] will-change-transform">
