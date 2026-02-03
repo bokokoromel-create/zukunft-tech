@@ -85,9 +85,9 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative scroll-mt-20 border-t border-zinc-200 bg-white py-20 sm:py-24"
+      className="relative scroll-mt-20 border-t border-zinc-200 bg-white py-16 sm:py-20 lg:py-24"
     >
-      <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={sectionStagger}
           initial="hidden"
@@ -178,7 +178,7 @@ export default function ContactSection() {
                       required
                       disabled={status === "loading"}
                       placeholder="Votre nom ou société"
-                      className="radius-md w-full border border-zinc-300 bg-white px-4 py-3 text-zinc-900 placeholder-zinc-400 transition-all duration-200 focus:border-ocean focus:outline-none focus:ring-2 focus:ring-ocean/20 disabled:opacity-60"
+                      className="radius-md w-full min-h-[48px] border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-900 placeholder-zinc-400 transition-all duration-200 focus:border-ocean focus:outline-none focus:ring-2 focus:ring-ocean/20 disabled:opacity-60 [font-size:16px]"
                     />
                   </label>
                   <label className="block">
@@ -191,7 +191,7 @@ export default function ContactSection() {
                       required
                       disabled={status === "loading"}
                       placeholder="vous@exemple.com"
-                      className="radius-md w-full border border-zinc-300 bg-white px-4 py-3 text-zinc-900 placeholder-zinc-400 transition-all duration-200 focus:border-ocean focus:outline-none focus:ring-2 focus:ring-ocean/20 disabled:opacity-60"
+                      className="radius-md w-full min-h-[48px] border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-900 placeholder-zinc-400 transition-all duration-200 focus:border-ocean focus:outline-none focus:ring-2 focus:ring-ocean/20 disabled:opacity-60 [font-size:16px]"
                     />
                   </label>
                 </div>
@@ -205,7 +205,7 @@ export default function ContactSection() {
                     rows={5}
                     disabled={status === "loading"}
                     placeholder="Décrivez votre projet ou posez votre question..."
-                    className="radius-lg w-full resize-none border border-zinc-300 bg-white px-4 py-3 text-zinc-900 placeholder-zinc-400 transition-all duration-200 focus:border-ocean focus:outline-none focus:ring-2 focus:ring-ocean/20 disabled:opacity-60"
+                    className="radius-lg w-full min-h-[120px] resize-none border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-900 placeholder-zinc-400 transition-all duration-200 focus:border-ocean focus:outline-none focus:ring-2 focus:ring-ocean/20 disabled:opacity-60 [font-size:16px]"
                   />
                 </label>
                 <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between">
@@ -215,7 +215,7 @@ export default function ContactSection() {
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="hover-btn btn-cta radius-2xl inline-flex w-full shrink-0 items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-ocean focus:ring-offset-2 focus:ring-offset-white active:translate-y-0 disabled:opacity-70 sm:w-auto"
+                    className="hover-btn btn-cta radius-2xl inline-flex min-h-[48px] w-full shrink-0 items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-ocean focus:ring-offset-2 focus:ring-offset-white active:translate-y-0 disabled:opacity-70 sm:w-auto"
                   >
                     {status === "loading" ? (
                       <>

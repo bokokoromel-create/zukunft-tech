@@ -76,9 +76,9 @@ export default function PricingCatalogueSection() {
   return (
     <section
       id="tarifs"
-      className="relative scroll-mt-20 border-t border-zinc-800 bg-zinc-950 py-20 sm:py-24 bg-pattern-z"
+      className="relative scroll-mt-20 border-t border-zinc-800 bg-zinc-950 py-16 sm:py-20 lg:py-24 bg-pattern-z"
     >
-      <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -136,7 +136,7 @@ export default function PricingCatalogueSection() {
               </ul>
               <Link
                 href="#contact"
-                className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-950 ${
+                className={`inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-950 sm:w-auto ${
                   pack.highlighted
                     ? "btn-cta text-white shadow-lg focus:ring-ocean"
                     : "border border-zinc-600/80 bg-zinc-800/80 text-zinc-200 hover:border-ocean/40 hover:bg-zinc-700/80 hover:text-white focus:ring-zinc-500"

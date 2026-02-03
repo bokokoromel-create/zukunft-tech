@@ -8,9 +8,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-b-brand bg-zinc-950 bg-pattern-z">
-      <div className="relative z-10 mx-auto max-w-6xl px-6 py-14 sm:px-8 lg:px-12">
-        <div className="grid gap-11 sm:grid-cols-2 lg:grid-cols-4 lg:gap-9">
+    <footer className="relative border-t border-b-brand bg-zinc-950 bg-pattern-z pb-[env(safe-area-inset-bottom)]">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
+        <div className="grid gap-10 sm:grid-cols-2 sm:gap-11 lg:grid-cols-4 lg:gap-9">
           <div className="lg:col-span-2">
             <Link
               href="#"
@@ -24,7 +24,7 @@ export default function Footer() {
             <div className="mt-4 flex flex-col gap-2 text-sm text-zinc-300">
               <a
                 href="mailto:contact@zukunft-tech.com"
-                className="hover-link inline-flex items-center gap-2 hover:text-ocean"
+                className="hover-link inline-flex min-h-[44px] items-center gap-2 hover:text-ocean"
               >
                 <Mail className="h-4 w-4 shrink-0" aria-hidden />
                 contact@zukunft-tech.com
@@ -40,12 +40,12 @@ export default function Footer() {
             <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
               Navigation
             </h3>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-4 space-y-0">
               {NAV_SECTIONS.map(({ id, label }) => (
                 <li key={id}>
                   <Link
                     href={`#${id}`}
-                    className="hover-link text-sm text-zinc-300 hover:text-ocean"
+                    className="hover-link flex min-h-[44px] items-center text-sm text-zinc-300 hover:text-ocean"
                   >
                     {label}
                   </Link>
@@ -58,12 +58,12 @@ export default function Footer() {
             <h3 className="text-sm font-semibold uppercase tracking-wider text-zinc-400">
               Légal
             </h3>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-4 space-y-0">
               {LEGAL_LINKS.map(({ href, label }) => (
                 <li key={href + label}>
                   <Link
                     href={href}
-                    className="hover-link text-sm text-zinc-300 hover:text-ocean"
+                    className="hover-link flex min-h-[44px] items-center text-sm text-zinc-300 hover:text-ocean"
                   >
                     {label}
                   </Link>

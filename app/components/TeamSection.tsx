@@ -76,9 +76,9 @@ export default function TeamSection() {
     <section
       ref={sectionRef}
       id="equipe"
-      className="relative scroll-mt-20 border-t border-zinc-200 bg-white py-20 sm:py-24"
+      className="relative scroll-mt-20 border-t border-zinc-200 bg-white py-16 sm:py-20 lg:py-24"
     >
-      <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}

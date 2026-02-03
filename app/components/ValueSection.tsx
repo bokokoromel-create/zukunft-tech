@@ -55,9 +55,9 @@ export default function ValueSection() {
   return (
     <section
       id="valeur"
-      className="relative scroll-mt-20 border-t border-zinc-800 bg-zinc-950 py-20 sm:py-24 bg-pattern-z"
+      className="relative scroll-mt-20 border-t border-zinc-800 bg-zinc-950 py-16 sm:py-20 lg:py-24 bg-pattern-z"
     >
-      <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -67,35 +67,35 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[90vh] max-w-6xl flex-col items-center justify-center px-6 py-24 text-center sm:px-8 lg:px-12">
+      <div className="relative z-10 mx-auto flex min-h-[85dvh] max-w-6xl flex-col items-center justify-center px-4 py-16 text-center sm:min-h-[90vh] sm:px-6 sm:py-24 lg:px-8">
         <motion.div
           variants={heroStagger}
           initial="hidden"
           animate="visible"
-          className="flex max-w-4xl flex-col items-center gap-7"
+          className="flex max-w-4xl flex-col items-center gap-5 sm:gap-7"
         >
           <motion.h1
             variants={heroStaggerItem}
             className="text-hero"
           >
             <span className="block text-title-gradient">Du site au réseau.</span>
-            <span className="mt-3 block text-title-gradient">
+            <span className="mt-2 block text-title-gradient sm:mt-3">
               Fait. Sécurisé.
             </span>
           </motion.h1>
 
           <motion.p
             variants={heroStaggerItem}
-            className="max-w-2xl text-lg text-zinc-300 sm:text-xl leading-relaxed"
+            className="max-w-2xl text-base text-zinc-300 leading-relaxed sm:text-lg sm:text-xl"
           >
             Sites, apps, réseaux. Conçus pour durer. Protégés pour de bon.
           </motion.p>
 
-          <motion.div variants={ctaStagger} className="mt-6 flex flex-wrap items-center justify-center gap-4">
-            <Link href="#tarifs">
+          <motion.div variants={ctaStagger} className="mt-4 flex w-full flex-col items-stretch gap-3 sm:mt-6 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
+            <Link href="#tarifs" className="w-full sm:w-auto">
               <motion.span
-                className="hover-btn btn-cta radius-2xl inline-flex items-center gap-2 px-6 py-3.5 text-base focus:outline-none focus:ring-2 focus:ring-ocean focus:ring-offset-2 focus:ring-offset-zinc-950"
-                whileHover={{ scale: 1.03 }}
+                className="hover-btn btn-cta radius-2xl inline-flex min-h-[48px] w-full items-center justify-center gap-2 px-6 py-3.5 text-base focus:outline-none focus:ring-2 focus:ring-ocean focus:ring-offset-2 focus:ring-offset-zinc-950 sm:w-auto"
+                whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
               >
@@ -105,12 +105,12 @@ export default function HeroSection() {
             </Link>
             <motion.a
               href="#contact"
-              className="hover-btn radius-2xl inline-flex items-center gap-2 border border-zinc-600 bg-zinc-900/80 px-6 py-3.5 text-base font-semibold text-white hover:border-ocean/40 hover:bg-zinc-800 hover:shadow-lg hover:shadow-ocean/10 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-zinc-950"
+              className="hover-btn radius-2xl inline-flex min-h-[48px] w-full items-center justify-center gap-2 border border-zinc-600 bg-zinc-900/80 px-6 py-3.5 text-base font-semibold text-white hover:border-ocean/40 hover:bg-zinc-800 hover:shadow-lg hover:shadow-ocean/10 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-zinc-950 sm:w-auto"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
             >
-              <MessageCircle className="h-5 w-5 text-ocean" aria-hidden />
+              <MessageCircle className="h-5 w-5 shrink-0 text-ocean" aria-hidden />
               Parler à un humain
             </motion.a>
           </motion.div>
