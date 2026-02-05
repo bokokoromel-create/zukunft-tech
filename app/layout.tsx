@@ -1,29 +1,39 @@
-import type { Metadata } from "next";
-import { Bebas_Neue, Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { DM_Serif_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 
-const plusJakarta = Plus_Jakarta_Sans({
+const dmSans = DM_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
+  preload: true,
 });
 
-const bebasNeue = Bebas_Neue({
+const dmSerif = DM_Serif_Display({
   weight: "400",
   variable: "--font-display",
   subsets: ["latin"],
   display: "swap",
+  preload: true,
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+export const viewport: Viewport = {
+  themeColor: "#F8F5F0",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: "Zukunft Tech | Digital & cybersécurité B2B",
   description:
     "Sites, apps, réseaux et cybersécurité pour les entreprises. Du sur mesure qui tient la route.",
+  metadataBase: new URL("https://zukunft-tech.com"),
+  openGraph: {
+    title: "Zukunft Tech | Digital & cybersécurité B2B",
+    description: "Sites, apps, réseaux et cybersécurité pour les entreprises.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -32,9 +42,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" className="scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://ui-avatars.com" />
+      </head>
       <body
-        className={`${plusJakarta.variable} ${bebasNeue.variable} ${geistMono.variable} font-sans antialiased`}
+        className={`${dmSans.variable} ${dmSerif.variable} font-sans antialiased`}
       >
         {children}
       </body>

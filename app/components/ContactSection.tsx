@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, Loader2, Mail, MapPin, MessageSquare, Phone, Send } from "lucide-react";
+import { CheckCircle2, Loader2, Mail, MapPin, Phone, Send } from "lucide-react";
 
 const sectionStagger = {
   hidden: { opacity: 0 },
@@ -85,7 +85,7 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative scroll-mt-20 border-t border-zinc-200 bg-white py-16 sm:py-20 lg:py-24"
+      className="relative scroll-mt-20 border-t border-glacier/20 bg-gradient-to-b from-white via-[#FEFDFB] to-white py-16 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -95,17 +95,12 @@ export default function ContactSection() {
           viewport={{ once: true, margin: "-60px" }}
           className="lg:grid lg:grid-cols-12 lg:gap-12 lg:items-start"
         >
-          {/* En-tête + infos de contact */}
           <div className="lg:col-span-5 lg:sticky lg:top-24">
             <motion.div variants={sectionItem} className="mb-10 lg:mb-12">
-              <span className="inline-flex items-center gap-2 rounded-full border border-ocean/30 bg-ocean/10 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-ocean">
-                <MessageSquare className="h-3.5 w-3.5" aria-hidden />
-                Réponse sous 48 h
-              </span>
-              <h2 className="mt-5 text-section text-zinc-900">
+              <h2 className="text-section text-foreground">
                 Contact
               </h2>
-              <p className="mt-4 max-w-sm text-zinc-600 leading-relaxed">
+              <p className="mt-4 max-w-sm leading-relaxed text-zinc-600">
                 Un projet, une question ? Écrivez-nous. L&apos;équipe vous répond
                 rapidement et en toute simplicité.
               </p>
@@ -118,16 +113,16 @@ export default function ContactSection() {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="hover-card flex items-start gap-4 rounded-xl border border-zinc-200 bg-zinc-50/60 p-4 transition-all duration-200 hover:border-ocean/30 hover:bg-ocean/5 hover:shadow-md"
+                    className="hover-card flex items-start gap-4 rounded-xl border border-glacier/20 bg-white/80 p-4 backdrop-blur-sm transition-all duration-200 hover:border-glacier/40 hover:bg-white hover:shadow-sm"
                   >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-ocean/15 text-ocean">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-glacier/15 text-glacier-dark">
                       <Icon className="h-5 w-5" aria-hidden />
                     </span>
                     <div className="min-w-0 flex-1">
                       <span className="block text-xs font-semibold uppercase tracking-wider text-zinc-500">
                         {item.label}
                       </span>
-                      <span className="mt-0.5 block text-sm font-medium text-zinc-900">
+                      <span className="mt-0.5 block text-sm font-medium text-foreground">
                         {item.value}
                       </span>
                     </div>
@@ -137,19 +132,18 @@ export default function ContactSection() {
             </motion.div>
           </div>
 
-          {/* Formulaire */}
           <motion.div
             variants={sectionItem}
             className="mt-12 flex justify-center lg:col-span-7 lg:mt-0"
           >
             <form
               onSubmit={handleSubmit}
-              className="w-full max-w-xl radius-xl border border-zinc-200 bg-zinc-50/80 p-6 shadow-lg shadow-zinc-200/50 sm:p-8"
+              className="w-full max-w-xl radius-xl border border-glacier/20 bg-white/80 p-4 shadow-md backdrop-blur-sm sm:p-6 lg:p-8"
             >
-              <h3 className="text-lg font-bold tracking-tight text-zinc-900 sm:text-xl">
+              <h3 className="text-lg font-bold tracking-tight text-foreground sm:text-xl">
                 Envoyez-nous un message
               </h3>
-              <p className="mt-1 text-sm text-zinc-500">
+              <p className="mt-1 text-sm text-zinc-600">
                 Remplissez le formulaire, on vous recontacte.
               </p>
 
@@ -178,7 +172,7 @@ export default function ContactSection() {
                       required
                       disabled={status === "loading"}
                       placeholder="Votre nom ou société"
-                      className="radius-md w-full min-h-[48px] border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-900 placeholder-zinc-400 transition-all duration-200 focus:border-ocean focus:outline-none focus:ring-2 focus:ring-ocean/20 disabled:opacity-60 [font-size:16px]"
+                      className="radius-md w-full min-h-[48px] border border-glacier/30 bg-white/80 px-4 py-3 text-base text-foreground placeholder-zinc-400 transition-all duration-200 focus:border-glacier focus:outline-none focus:ring-2 focus:ring-glacier/20 disabled:opacity-60 [font-size:16px]"
                     />
                   </label>
                   <label className="block">
@@ -191,7 +185,7 @@ export default function ContactSection() {
                       required
                       disabled={status === "loading"}
                       placeholder="vous@exemple.com"
-                      className="radius-md w-full min-h-[48px] border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-900 placeholder-zinc-400 transition-all duration-200 focus:border-ocean focus:outline-none focus:ring-2 focus:ring-ocean/20 disabled:opacity-60 [font-size:16px]"
+                      className="radius-md w-full min-h-[48px] border border-glacier/30 bg-white/80 px-4 py-3 text-base text-foreground placeholder-zinc-400 transition-all duration-200 focus:border-glacier focus:outline-none focus:ring-2 focus:ring-glacier/20 disabled:opacity-60 [font-size:16px]"
                     />
                   </label>
                 </div>
@@ -205,7 +199,7 @@ export default function ContactSection() {
                     rows={5}
                     disabled={status === "loading"}
                     placeholder="Décrivez votre projet ou posez votre question..."
-                    className="radius-lg w-full min-h-[120px] resize-none border border-zinc-300 bg-white px-4 py-3 text-base text-zinc-900 placeholder-zinc-400 transition-all duration-200 focus:border-ocean focus:outline-none focus:ring-2 focus:ring-ocean/20 disabled:opacity-60 [font-size:16px]"
+                    className="radius-lg w-full min-h-[120px] resize-none border border-glacier/30 bg-white/80 px-4 py-3 text-base text-foreground placeholder-zinc-400 transition-all duration-200 focus:border-glacier focus:outline-none focus:ring-2 focus:ring-glacier/20 disabled:opacity-60 [font-size:16px]"
                   />
                 </label>
                 <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between">
@@ -215,7 +209,7 @@ export default function ContactSection() {
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="hover-btn btn-cta radius-2xl inline-flex min-h-[48px] w-full shrink-0 items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-ocean focus:ring-offset-2 focus:ring-offset-white active:translate-y-0 disabled:opacity-70 sm:w-auto"
+                    className="hover-btn btn-cta radius-2xl inline-flex min-h-[48px] w-full shrink-0 items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-white focus:outline-none focus:ring-2 focus:ring-glacier focus:ring-offset-2 focus:ring-offset-white active:translate-y-0 disabled:opacity-70 sm:w-auto"
                   >
                     {status === "loading" ? (
                       <>

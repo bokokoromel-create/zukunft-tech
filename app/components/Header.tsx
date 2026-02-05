@@ -1,95 +1,87 @@
 "use client";
 
-import { useState, useCallback } from "react";
-import { NAV_SECTIONS } from "../config/navigation";
+import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { NAV_SECTIONS } from "../config/navigation";
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const closeMenu = useCallback(() => setMenuOpen(false), []);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-b-brand bg-zinc-950/90 backdrop-blur-xl pt-[env(safe-area-inset-top)]">
+    <header className="sticky top-0 z-50 border-b border-b-brand bg-white/90 backdrop-blur-xl shadow-sm pt-[env(safe-area-inset-top)]">
       <div className="mx-auto flex h-14 min-h-[56px] max-w-6xl items-center justify-between gap-4 px-4 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:h-16 sm:px-6 lg:px-8">
         <Link
           href="#"
-          onClick={closeMenu}
-          className="hover-link font-display text-xl tracking-wide text-white hover:text-ocean sm:text-2xl"
+          className="hover-link font-display text-xl tracking-normal text-foreground hover:text-glacier-dark sm:text-2xl"
           aria-label="ZUKUNFT TECH — Accueil"
         >
           ZUKUNFT TECH
         </Link>
 
-        {/* Nav desktop */}
-        <nav
-          className="hidden items-center gap-6 text-sm font-semibold text-zinc-200 md:flex lg:gap-7"
-          aria-label="Navigation principale"
-        >
+        <nav className="hidden items-center gap-1 sm:flex lg:gap-2" aria-label="Navigation principale">
           {NAV_SECTIONS.map(({ id, label }) => (
             <Link
               key={id}
               href={`#${id}`}
-              className="hover-link min-h-[44px] items-center transition-colors hover:text-white focus:text-ocean focus:outline-none focus:ring-2 focus:ring-ocean focus:ring-offset-2 focus:ring-offset-zinc-950 md:inline-flex"
+              className="hover-link min-h-[44px] px-3 py-2 text-sm font-medium text-foreground hover:text-glacier-dark focus:outline-none lg:px-4"
             >
               {label}
             </Link>
           ))}
         </nav>
 
-        {/* CTA desktop */}
-        <Link
-          href="#contact"
-          className="hover-btn btn-cta radius-2xl hidden min-h-[44px] items-center justify-center px-5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-ocean focus:ring-offset-2 focus:ring-offset-zinc-950 active:translate-y-0 md:inline-flex"
-        >
-          Nous contacter
-        </Link>
-
-        {/* Bouton hamburger mobile */}
-        <button
-          type="button"
-          onClick={() => setMenuOpen((o) => !o)}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-zinc-200 transition-colors hover:bg-zinc-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-ocean focus:ring-offset-2 focus:ring-offset-zinc-950 md:hidden"
-          aria-expanded={menuOpen}
-          aria-controls="nav-mobile"
-          aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-        >
-          {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Link
+            href="#contact"
+            className="hover-btn btn-cta radius-2xl inline-flex min-h-[40px] items-center justify-center whitespace-nowrap px-4 py-2 text-[0.8rem] font-semibold tracking-wide text-white shadow-md focus:outline-none focus:ring-2 focus:ring-glacier focus:ring-offset-2 focus:ring-offset-white active:translate-y-0 sm:min-h-[44px] sm:px-5 sm:text-xs"
+          >
+            Contactez-nous
+          </Link>
+          <button
+            type="button"
+            onClick={() => setMobileOpen((o) => !o)}
+            className="flex min-h-[44px] min-w-[44px] items-center justify-center rounded-lg text-foreground hover:bg-glacier/10 hover:text-glacier-dark focus:outline-none focus:ring-2 focus:ring-glacier/30 sm:hidden"
+            aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={mobileOpen}
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Menu mobile */}
       <div
-        id="nav-mobile"
-        className={`border-t border-zinc-800 bg-zinc-950/98 backdrop-blur-xl transition-[max-height] duration-300 ease-out md:hidden ${
-          menuOpen ? "max-h-[80vh] overflow-y-auto" : "max-h-0 overflow-hidden"
-        }`}
-        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
-        aria-hidden={!menuOpen}
+        className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ease-out sm:hidden ${mobileOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+        aria-hidden={!mobileOpen}
       >
-        <nav
-          className="flex flex-col px-4 pb-6 pt-2 pl-[max(1rem,env(safe-area-inset-left))]"
-          aria-label="Navigation mobile"
-        >
-          {NAV_SECTIONS.map(({ id, label }) => (
-            <Link
-              key={id}
-              href={`#${id}`}
-              onClick={closeMenu}
-              className="hover-link min-h-[48px] flex items-center border-b border-zinc-800/80 text-base font-medium text-zinc-200 last:border-0 hover:text-white focus:text-ocean focus:outline-none"
-            >
-              {label}
-            </Link>
-          ))}
-          <Link
-            href="#contact"
-            onClick={closeMenu}
-            className="hover-btn btn-cta radius-2xl mt-4 flex min-h-[48px] w-full items-center justify-center gap-2 px-5 py-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-ocean focus:ring-offset-2 focus:ring-offset-zinc-950 active:translate-y-0"
+        <div className="min-h-0">
+          <nav
+            className="border-t border-glacier/20 bg-white/95 backdrop-blur-xl px-4 pb-4 pt-2"
+            aria-label="Navigation mobile"
           >
-            Nous contacter
-          </Link>
-        </nav>
+            <ul className="flex flex-col gap-0">
+              {NAV_SECTIONS.map(({ id, label }) => (
+                <li key={id}>
+                  <Link
+                    href={`#${id}`}
+                    onClick={() => setMobileOpen(false)}
+                    className="hover-link flex min-h-[48px] items-center border-b border-glacier/10 py-3 text-base font-medium text-foreground hover:text-glacier-dark"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="#contact"
+              onClick={() => setMobileOpen(false)}
+              className="hover-btn btn-cta radius-2xl mt-4 flex min-h-[48px] w-full items-center justify-center text-sm font-semibold text-white shadow-md"
+            >
+              Contactez-nous
+            </Link>
+          </nav>
+        </div>
       </div>
     </header>
   );

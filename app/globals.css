@@ -1,45 +1,58 @@
 @import "tailwindcss";
 
 /*
-  — Identité visuelle ZUKUNFT TECH —
-  Brand-Aqua: Electric Aqua #20F0FF
-  Brand-Blue: Bright Futuristic Blue #2C3EFA
-  Background: Noir profond #050505
-  Gradient primaire: Aqua → Blue
+  — Identité visuelle ZUKUNFT TECH — Palette CleanPro Inspired —
+  Bleu Glacier: #A8D5E2 (primary)
+  Pêche Doux: #F5D5B8 (accent)
+  Crème: #F8F5F0 (background)
+  Charbon Doux: #2D3142 (text)
+  Or Doux: #FFD166 (highlight)
+  Gradient signature: Bleu Glacier → Pêche
 */
 
 :root {
-  /* Couleurs de marque */
-  --brand-aqua: #20f0ff;
-  --brand-aqua-rgb: 32 240 255;
-  --brand-blue: #2c3efa;
-  --brand-blue-rgb: 44 62 250;
-  /* Gradient primaire (Aqua → Blue) */
-  --gradient-primary: linear-gradient(to right, var(--brand-aqua), var(--brand-blue));
-  --gradient-primary-vertical: linear-gradient(to bottom, var(--brand-aqua), var(--brand-blue));
+  /* Couleurs de marque — Palette Pastel Premium */
+  --brand-glacier: #A8D5E2;
+  --brand-glacier-rgb: 168 213 226;
+  --brand-glacier-dark: #7FB3C4;
+  --brand-peach: #F5D5B8;
+  --brand-peach-rgb: 245 213 184;
+  --brand-peach-dark: #E8C4A8;
+  --brand-gold: #FFD166;
+  --brand-gold-rgb: 255 209 102;
+  
+  /* Gradient primaire (Glacier → Pêche) */
+  --gradient-primary: linear-gradient(to right, var(--brand-glacier), var(--brand-peach));
+  --gradient-primary-vertical: linear-gradient(to bottom, var(--brand-glacier), var(--brand-peach));
+  --gradient-soft: linear-gradient(135deg, var(--brand-glacier), var(--brand-peach));
 
-  /* Primary = Brand-Aqua (alias pour composants) */
-  --primary: var(--brand-aqua);
-  --primary-hover: #5ff5ff;
-  --primary-deep: var(--brand-blue);
-  --accent-ocean: var(--brand-aqua);
-  --accent-ocean-light: var(--primary-hover);
-  --accent-ocean-dark: var(--brand-blue);
+  /* Primary = Brand-Glacier (alias pour composants) */
+  --primary: var(--brand-glacier);
+  --primary-hover: var(--brand-glacier-dark);
+  --primary-deep: #6B9AAA;
+  --accent-glacier: var(--brand-glacier);
+  --accent-glacier-light: #C5E5EF;
+  --accent-glacier-dark: var(--brand-glacier-dark);
+  --accent-peach: var(--brand-peach);
+  --accent-peach-dark: var(--brand-peach-dark);
+  --accent-gold: var(--brand-gold);
 
-  /* Surfaces — fond noir profond #050505 */
-  --bg-page: #050505;
-  --bg-surface: #0c0c0f;
-  --bg-surface-elevated: #141418;
+  /* Surfaces — fond crème lumineux */
+  --bg-page: #F8F5F0;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #FEFDFB;
   --bg-card: var(--bg-surface);
-  --glass-bg: rgba(12, 12, 15, 0.85);
-  --glass-border: rgba(20, 20, 24, 0.9);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(168, 213, 226, 0.2);
 
-  /* Texte */
-  --foreground: #fafafa;
-  --text-secondary: #d4d4d8;
-  --muted: #a1a1aa;
-  --border: #27272a;
-  --border-subtle: #1a1a1d;
+  /* Texte — Charbon doux */
+  --foreground: #2D3142;
+  --text-secondary: #525B6D;
+  --text-muted: #7A8496;
+  --muted: #B0B8C5;
+  --border: #E2E8F0;
+  --border-subtle: #F0F4F8;
+  
   /* Transitions */
   --ease-out-smooth: cubic-bezier(0.33, 1, 0.68, 1);
   --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
@@ -50,12 +63,19 @@
 @theme inline {
   --color-background: var(--bg-page);
   --color-foreground: var(--foreground);
-  /* Couleurs de marque ZUKUNFT TECH */
-  --color-brand-aqua: var(--brand-aqua);
-  --color-brand-blue: var(--brand-blue);
-  --color-ocean: var(--brand-aqua);
-  --color-ocean-light: var(--primary-hover);
-  --color-ocean-dark: var(--brand-blue);
+  /* Couleurs de marque ZUKUNFT TECH — Palette Pastel */
+  --color-brand-glacier: var(--brand-glacier);
+  --color-brand-peach: var(--brand-peach);
+  --color-glacier: var(--brand-glacier);
+  --color-glacier-light: var(--accent-glacier-light);
+  --color-glacier-dark: var(--brand-glacier-dark);
+  --color-peach: var(--brand-peach);
+  --color-peach-dark: var(--brand-peach-dark);
+  --color-gold: var(--brand-gold);
+  /* Backward compatibility aliases */
+  --color-ocean: var(--brand-glacier);
+  --color-ocean-light: var(--accent-glacier-light);
+  --color-ocean-dark: var(--brand-glacier-dark);
   --font-sans: var(--font-sans);
   --font-display: var(--font-display);
   --font-mono: var(--font-geist-mono);
@@ -64,9 +84,8 @@
 html {
   scroll-behavior: smooth;
   -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
 }
-
-/* Tap highlight désactivé sur mobile pour un rendu plus propre */
 
 body {
   background: var(--bg-page);
@@ -77,45 +96,48 @@ body {
   letter-spacing: 0.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100dvh;
 }
 
-/* Titres — police display, responsive mobile-first */
+/* Titres — DM Serif Display, élégant et premium */
 .text-hero {
-  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-family: var(--font-display), Georgia, serif;
   font-size: clamp(2rem, 5vw + 1.25rem, 4.5rem);
   font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1.08;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
   word-break: break-word;
 }
 
 .text-section {
-  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-family: var(--font-display), Georgia, serif;
   font-size: clamp(1.5rem, 3vw + 0.75rem, 2.75rem);
   font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1.15;
+  letter-spacing: -0.01em;
+  line-height: 1.18;
   word-break: break-word;
 }
 
 .text-card-title {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.35;
 }
 
-/* Corps de texte — lisibilité, espacement généreux */
+/* Corps de texte — DM Sans, lisible et aéré */
 .text-body {
   font-size: 1rem;
   line-height: 1.75;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.005em;
   color: var(--text-secondary);
 }
 .text-body-muted {
   font-size: 0.9375rem;
   line-height: 1.65;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.005em;
   color: var(--muted);
 }
 
@@ -137,7 +159,7 @@ body {
   color: var(--primary-hover);
 }
 
-/* Gradient primaire de marque (Aqua → Blue) */
+/* Gradient primaire de marque (Glacier → Pêche) */
 .bg-brand-gradient {
   background: var(--gradient-primary);
 }
@@ -155,10 +177,10 @@ body {
 .text-title-gradient {
   background: linear-gradient(
     90deg,
-    var(--brand-aqua) 0%,
-    var(--brand-aqua) 25%,
-    var(--brand-blue) 75%,
-    var(--brand-blue) 100%
+    var(--brand-glacier) 0%,
+    var(--brand-glacier-dark) 25%,
+    var(--brand-peach-dark) 75%,
+    var(--brand-peach) 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -186,20 +208,20 @@ body {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath d='M0 10h80v6L14 74H0v-6h66L0 16v-6z' fill='%2320f0ff' fill-opacity='0.035'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath d='M0 10h80v6L14 74H0v-6h66L0 16v-6z' fill='%23A8D5E2' fill-opacity='0.04'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 80px 80px;
   opacity: 1;
 }
 
 .font-display {
-  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
 }
 a:hover, button:hover {
   cursor: pointer;
 }
 
-/* Hover — cartes (lift + ombre) */
+/* Hover — cartes (lift + ombre douce) */
 .hover-card {
   transition: transform var(--duration-hover) var(--ease-out-smooth),
     box-shadow 0.3s var(--ease-out-smooth),
@@ -207,7 +229,7 @@ a:hover, button:hover {
 }
 .hover-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgb(var(--brand-aqua-rgb) / 0.2);
+  box-shadow: 0 20px 40px -12px rgba(168, 213, 226, 0.3), 0 0 0 1px rgb(var(--brand-glacier-rgb) / 0.2);
 }
 
 /* Hover — boutons */
@@ -239,47 +261,141 @@ a:hover, button:hover {
   border: 1px solid var(--glass-border);
 }
 
-/* Glassmorphism avec liseré aux couleurs de la charte (Aqua/Blue) */
+/* Glassmorphism avec liseré aux couleurs de la charte (Glacier/Pêche) */
 .glass-brand {
   background: var(--glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgb(var(--brand-aqua-rgb) / 0.12);
-  box-shadow: inset 0 1px 0 rgb(var(--brand-aqua-rgb) / 0.06);
+  border: 1px solid rgb(var(--brand-glacier-rgb) / 0.2);
+  box-shadow: inset 0 1px 0 rgb(var(--brand-glacier-rgb) / 0.1);
 }
 
 .glass-strong {
-  background: rgba(12, 12, 15, 0.95);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgb(var(--brand-aqua-rgb) / 0.1);
+  border: 1px solid rgb(var(--brand-glacier-rgb) / 0.15);
 }
 
-/* Bouton CTA principal — dégradé Aqua-Blue + glow au survol */
+/* Bouton CTA principal — dégradé Glacier-Pêche + ombre douce au survol */
 .btn-cta {
   background: var(--gradient-primary);
-  color: white;
+  color: var(--foreground);
   font-weight: 600;
   transition: transform var(--duration-hover) var(--ease-out-smooth),
     box-shadow 0.4s var(--ease-out-smooth);
 }
 .btn-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 28px rgb(var(--brand-aqua-rgb) / 0.45),
-    0 0 56px rgb(var(--brand-blue-rgb) / 0.25);
+  box-shadow: 0 0 28px rgb(var(--brand-glacier-rgb) / 0.4),
+    0 0 56px rgb(var(--brand-peach-rgb) / 0.25);
 }
 .btn-cta:active {
   transform: translateY(0);
 }
 .btn-cta:focus-visible {
-  outline: 2px solid var(--brand-aqua);
+  outline: 2px solid var(--brand-glacier);
   outline-offset: 2px;
 }
 
 /* Bordures fines avec liseré charte */
 .border-brand-subtle {
-  border-color: rgb(var(--brand-aqua-rgb) / 0.12);
+  border-color: rgb(var(--brand-glacier-rgb) / 0.15);
 }
 .border-b-brand {
-  border-bottom: 1px solid rgb(var(--brand-aqua-rgb) / 0.12);
+  border-bottom: 1px solid rgb(var(--brand-glacier-rgb) / 0.15);
+}
+
+/* ===== OPTIMISATIONS DE PERFORMANCE ===== */
+
+/* Conteneur optimisé - évite les reflows */
+.contain-layout {
+  contain: layout;
+}
+.contain-paint {
+  contain: paint;
+}
+.contain-strict {
+  contain: strict;
+}
+
+/* GPU acceleration pour animations fluides */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Animation pulse lente optimisée */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+.animate-pulse-slow {
+  animation: pulse-slow 8s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+/* Delay d'animation */
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Animation de rotation lente — plus visible */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+  will-change: transform;
+}
+
+@keyframes spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+.animate-spin-reverse {
+  animation: spin-reverse 25s linear infinite;
+}
+
+/* Réduction des animations si préférence utilisateur */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-pulse-slow {
+    animation: none;
+  }
+}
+
+/* Optimisation du scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Optimisation des images */
+img {
+  content-visibility: auto;
+}
+
+/* Lazy loading natif des sections */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
 }

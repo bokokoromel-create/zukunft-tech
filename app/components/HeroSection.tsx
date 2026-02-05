@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, BadgeCheck, Heart } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+import { memo } from "react";
 
 const heroStagger = {
   hidden: { opacity: 0 },
@@ -13,109 +15,150 @@ const heroStagger = {
 };
 
 const heroStaggerItem = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.48, ease: [0.25, 0.46, 0.45, 0.94] as const },
-  },
-};
-
-const ctaStagger = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { delay: 0.35, duration: 0.48 },
+    transition: { duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] as const },
   },
 };
 
-export default function HeroSection() {
+// Composant stat card
+const StatCard = memo(function StatCard({
+  icon: Icon,
+  label,
+  value,
+  gradient,
+  position,
+  delay,
+}: {
+  icon: typeof BadgeCheck;
+  label: string;
+  value: string;
+  gradient: string;
+  position: string;
+  delay: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      transition={{ duration: 0.5, delay, ease: [0.25, 0.46, 0.45, 0.94] as const }}
+      className={`absolute ${position}`}
+    >
+      <div className="rounded-2xl border border-white/30 bg-white/40 px-4 py-3 shadow-xl shadow-black/5 backdrop-blur-xl">
+        <div className="flex items-center gap-3">
+          <div
+            className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${gradient} shadow-md`}
+          >
+            <Icon className="h-5 w-5 text-white" />
+          </div>
+          <div>
+            <p className="text-[0.65rem] font-medium uppercase tracking-wider text-zinc-600">
+              {label}
+            </p>
+            <p className="text-xl font-bold text-foreground">{value}</p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+});
+
+function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-[90vh] overflow-hidden bg-gradient-to-b from-background via-zinc-950/80 to-background bg-pattern-z"
+      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#F8F5F0] via-[#FFF] to-[#F5F0E8]"
       aria-label="Accueil"
     >
-      {/* Métallique / reflets subtils */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_30%_20%,rgba(251,146,60,0.08),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_70%_70%,rgb(32_240_255/0.06),transparent_50%)]" />
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/lune.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center opacity-40"
+          quality={80}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F8F5F0]/60 via-[#FFFFFF]/50 to-[#F8F5F0]/70" />
+      </div>
 
-      {/* Éléments décoratifs type "pièces" / 3D */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute left-[15%] top-[25%] h-32 w-32 rounded-full bg-gradient-to-br from-zinc-600/40 to-zinc-800/30 blur-2xl"
-          animate={{ opacity: [0.4, 0.7, 0.4] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      {/* Ambient lights pastel */}
+      <div className="pointer-events-none absolute inset-0 z-[1]">
+        <div className="animate-pulse-slow absolute left-[10%] top-[15%] h-[400px] w-[400px] rounded-full bg-glacier/20 blur-[120px]" />
+        <div className="animate-pulse-slow animation-delay-2000 absolute bottom-[20%] right-[10%] h-[350px] w-[350px] rounded-full bg-peach/20 blur-[120px]" />
+      </div>
+
+      {/* Floating stat cards */}
+      <div className="pointer-events-none absolute inset-0 z-20 hidden sm:block">
+        <StatCard
+          icon={BadgeCheck}
+          label="Projets s&#233;curis&#233;s"
+          value="100+"
+          gradient="from-glacier to-glacier-dark"
+          position="left-[5%] top-[55%] lg:left-[10%] lg:top-[50%]"
+          delay={0.8}
         />
-        <motion.div
-          className="absolute right-[20%] top-[40%] h-24 w-24 rounded-full border border-zinc-600/30 bg-zinc-700/20"
-          style={{ borderRadius: "40% 60% 50% 50%" }}
-          animate={{ y: [0, -8, 0], rotate: [0, 5, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-[30%] left-[25%] h-20 w-20 rounded-full bg-gradient-to-br from-zinc-500/20 to-zinc-700/20"
-          style={{ borderRadius: "60% 40% 50% 50%" }}
-          animate={{ y: [0, 6, 0], scale: [1, 1.05, 1] }}
-          transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute right-[30%] bottom-[25%] h-16 w-16 rounded-full border border-zinc-600/20"
-          animate={{ y: [0, -5, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        <StatCard
+          icon={Heart}
+          label="Satisfaction"
+          value="99%"
+          gradient="from-[#FFB4A2] to-peach-dark"
+          position="right-[5%] top-[62%] lg:right-[12%] lg:top-[58%]"
+          delay={1}
         />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[85dvh] max-w-6xl flex-col items-center justify-center px-4 py-16 text-center sm:min-h-[90vh] sm:px-6 sm:py-24 lg:px-8">
+      {/* Content */}
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-4 pb-16 pt-20 text-center sm:px-6 sm:pb-20 sm:pt-24">
         <motion.div
           variants={heroStagger}
           initial="hidden"
           animate="visible"
-          className="flex max-w-4xl flex-col items-center gap-5 sm:gap-7"
+          className="flex max-w-4xl flex-col items-center gap-5"
         >
+          {/* Titre */}
           <motion.h1
             variants={heroStaggerItem}
-            className="text-hero"
+            className="font-display text-[clamp(2.5rem,6vw+1rem,5rem)] font-normal leading-[1.08] tracking-tight"
           >
-            <span className="block text-title-gradient">Du site au réseau.</span>
-            <span className="mt-2 block text-title-gradient sm:mt-3">
-              Fait. Sécurisé.
+            <span className="block text-foreground">&#201;levez votre</span>
+            <span className="mt-1 block bg-gradient-to-r from-glacier-dark via-glacier to-peach bg-clip-text text-transparent sm:mt-2">
+              Infrastructure Digitale
             </span>
           </motion.h1>
 
+          {/* Sous-titre */}
           <motion.p
             variants={heroStaggerItem}
-            className="max-w-2xl text-base text-zinc-300 leading-relaxed sm:text-lg sm:text-xl"
+            className="max-w-xl text-base leading-relaxed text-zinc-700 sm:text-lg"
           >
-            Sites, apps, réseaux. Conçus pour durer. Protégés pour de bon.
+            Sites, apps et r&#233;seaux con&#231;us pour performer. S&#233;curis&#233;s pour durer.
+            <span className="font-medium text-glacier-dark"> Propuls&#233; par ZUKUNFT TECH.</span>
           </motion.p>
 
-          <motion.div variants={ctaStagger} className="mt-4 flex w-full flex-col items-stretch gap-3 sm:mt-6 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
-            <Link href="#tarifs" className="w-full sm:w-auto">
-              <motion.span
-                className="hover-btn btn-cta radius-2xl inline-flex min-h-[48px] w-full items-center justify-center gap-2 px-6 py-3.5 text-base focus:outline-none focus:ring-2 focus:ring-ocean focus:ring-offset-2 focus:ring-offset-zinc-950 sm:w-auto"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
-              >
-                Découvrir nos packs
-                <ArrowRight className="h-5 w-5 text-white" aria-hidden />
-              </motion.span>
+          {/* CTA */}
+          <motion.div
+            variants={heroStaggerItem}
+            className="mt-4 flex w-full flex-col items-stretch gap-3 sm:mt-6 sm:w-auto sm:flex-row sm:justify-center"
+          >
+            <Link href="#contact" className="w-full sm:w-auto">
+              <span className="group relative inline-flex min-h-[56px] w-full cursor-pointer items-center justify-center gap-2.5 overflow-hidden rounded-full bg-gradient-to-r from-glacier to-glacier-dark px-8 py-4 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:shadow-[0_8px_30px_rgba(168,213,226,0.5)] hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-glacier/50 focus:ring-offset-2 focus:ring-offset-white sm:w-auto">
+                <span className="relative z-10">Parler &#224; un expert</span>
+                <ArrowRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+              </span>
             </Link>
-            <motion.a
-              href="#contact"
-              className="hover-btn radius-2xl inline-flex min-h-[48px] w-full items-center justify-center gap-2 border border-zinc-600 bg-zinc-900/80 px-6 py-3.5 text-base font-semibold text-white hover:border-ocean/40 hover:bg-zinc-800 hover:shadow-lg hover:shadow-ocean/10 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2 focus:ring-offset-zinc-950 sm:w-auto"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "tween", duration: 0.2, ease: "easeOut" }}
-            >
-              <MessageCircle className="h-5 w-5 shrink-0 text-ocean" aria-hidden />
-              Parler à un humain
-            </motion.a>
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Bottom gradient */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-32 bg-gradient-to-t from-[#F8F5F0] to-transparent" />
     </section>
   );
 }
+
+export default memo(HeroSection);

@@ -18,7 +18,7 @@ const packs = [
     ],
     cta: "Demander un devis",
     highlighted: false,
-    gradient: "from-zinc-600 to-zinc-700",
+    gradient: "from-glacier/80 to-glacier-dark/80",
   },
   {
     id: "entreprise",
@@ -34,7 +34,7 @@ const packs = [
     ],
     cta: "Choisir ce pack",
     highlighted: true,
-    gradient: "from-ocean to-ocean-light",
+    gradient: "from-glacier to-peach",
   },
   {
     id: "premium",
@@ -51,7 +51,7 @@ const packs = [
     ],
     cta: "Nous contacter",
     highlighted: false,
-    gradient: "from-violet-500 to-purple-500",
+    gradient: "from-peach/80 to-peach-dark/80",
   },
 ];
 
@@ -76,7 +76,7 @@ export default function PricingCatalogueSection() {
   return (
     <section
       id="tarifs"
-      className="relative scroll-mt-20 border-t border-zinc-800 bg-zinc-950 py-16 sm:py-20 lg:py-24 bg-pattern-z"
+      className="relative scroll-mt-20 border-t border-glacier/20 bg-gradient-to-b from-white via-[#FEFDFB] to-white py-16 sm:py-20 lg:py-24"
     >
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -89,7 +89,7 @@ export default function PricingCatalogueSection() {
           <h2 className="text-section text-title-gradient">
             Des offres claires et adaptées.
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-zinc-400 leading-relaxed">
+          <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-zinc-600">
             Investissez dans la sérénité et la croissance.
           </p>
         </motion.div>
@@ -99,7 +99,7 @@ export default function PricingCatalogueSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
-          className="grid gap-7 lg:grid-cols-3"
+          className="grid gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-7"
         >
           {packs.map((pack) => (
             <motion.article
@@ -107,27 +107,27 @@ export default function PricingCatalogueSection() {
               variants={cardReveal}
               className={`relative flex flex-col rounded-2xl p-6 transition-all duration-300 ease-out hover:-translate-y-2 ${
                 pack.highlighted
-                  ? "border border-ocean/40 bg-zinc-900/70 shadow-xl shadow-ocean/10 backdrop-blur-xl lg:scale-[1.02] lg:shadow-2xl"
-                  : "border border-zinc-600/60 bg-zinc-900/50 backdrop-blur-xl hover:border-zinc-500/70 hover:shadow-lg"
+                  ? "border-2 border-glacier shadow-lg shadow-glacier/20 bg-gradient-to-br from-glacier/5 to-peach/5 backdrop-blur-xl lg:scale-[1.02]"
+                  : "border border-glacier/20 bg-white/90 backdrop-blur-xl hover:border-glacier/40 hover:shadow-md"
               }`}
             >
-              <h3 className={`text-2xl font-extrabold tracking-tight text-white sm:text-3xl`}>
+              <h3 className={`text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl`}>
                 {pack.name}
               </h3>
-              <p className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              <p className="mt-4 text-3xl font-extrabold tracking-tight text-glacier-dark sm:text-4xl">
                 {pack.price}
               </p>
-              <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+              <p className="mt-4 text-sm leading-relaxed text-zinc-600">
                 {pack.description}
               </p>
               <ul className="mt-6 flex-1 space-y-3">
                 {pack.features.map((feature) => (
                   <li
                     key={feature}
-                    className="flex items-start gap-2.5 text-sm text-zinc-300"
+                    className="flex items-start gap-2.5 text-sm text-zinc-700"
                   >
                     <Check
-                      className="mt-0.5 h-4 w-4 shrink-0 text-ocean"
+                      className="mt-0.5 h-4 w-4 shrink-0 text-glacier-dark"
                       aria-hidden
                     />
                     <span>{feature}</span>
@@ -136,14 +136,14 @@ export default function PricingCatalogueSection() {
               </ul>
               <Link
                 href="#contact"
-                className={`inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-950 sm:w-auto ${
+                className={`inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white sm:w-auto ${
                   pack.highlighted
-                    ? "btn-cta text-white shadow-lg focus:ring-ocean"
-                    : "border border-zinc-600/80 bg-zinc-800/80 text-zinc-200 hover:border-ocean/40 hover:bg-zinc-700/80 hover:text-white focus:ring-zinc-500"
+                    ? "btn-cta text-white shadow-md focus:ring-glacier"
+                    : "border border-glacier/30 bg-glacier/10 text-glacier-dark hover:border-glacier/50 hover:bg-glacier/20 focus:ring-glacier"
                 }`}
               >
                 {pack.cta}
-                <ChevronRight className={`h-4 w-4 ${pack.highlighted ? "text-white" : "text-ocean"}`} aria-hidden />
+                <ChevronRight className={`h-4 w-4 ${pack.highlighted ? "text-white" : "text-glacier-dark"}`} aria-hidden />
               </Link>
             </motion.article>
           ))}
