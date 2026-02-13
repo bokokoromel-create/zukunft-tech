@@ -15,9 +15,6 @@ const PortfolioSection = dynamic(() => import("./components/PortfolioSection"), 
 const PricingCatalogueSection = dynamic(() => import("./components/PricingCatalogueSection"), {
   loading: () => <SectionSkeleton />,
 });
-const TeamSection = dynamic(() => import("./components/TeamSection"), {
-  loading: () => <SectionSkeleton />,
-});
 const AboutSection = dynamic(() => import("./components/AboutSection"), {
   loading: () => <SectionSkeleton />,
 });
@@ -43,7 +40,6 @@ export default function Home() {
         <ValueSection />
         <PortfolioSection />
         <PricingCatalogueSection />
-        <TeamSection />
         <AboutSection />
         <ContactSection />
         <Footer />

@@ -4,7 +4,6 @@ export const NAV_SECTIONS = [
   { id: "services", label: "Services" },
   { id: "portfolio", label: "Portfolio" },
   { id: "tarifs", label: "Tarifs" },
-  { id: "equipe", label: "Équipe" },
   { id: "a-propos", label: "À propos" },
   { id: "contact", label: "Contact" },
 ] as const;

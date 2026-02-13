@@ -9,7 +9,7 @@ export default function Footer() {
 
   return (
     <footer className="relative border-t border-glacier/20 bg-gradient-to-b from-white to-[#F8F5F0] pb-[max(1rem,env(safe-area-inset-bottom))]">
-      <div className="relative z-10 mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 py-10 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:px-6 sm:py-14 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4 lg:gap-9">
           <div className="lg:col-span-2">
             <Link

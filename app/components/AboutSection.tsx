@@ -63,13 +63,13 @@ function AboutSection() {
       id="a-propos"
       className="relative scroll-mt-20 overflow-hidden border-t border-glacier/20 bg-gradient-to-b from-white via-[#FEFDFB] to-white py-16 sm:py-20 lg:py-24"
     >
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const }}
             className="relative order-2 flex min-h-[240px] items-center justify-center sm:min-h-[280px] lg:order-1 lg:min-h-[360px]"
           >
             <div className="relative aspect-square w-full max-w-[min(320px,85vw)] lg:max-w-[380px]">

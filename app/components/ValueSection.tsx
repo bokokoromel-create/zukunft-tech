@@ -6,37 +6,37 @@ import { memo } from "react";
 
 const valueProps = [
   {
-    problem: "Outils bancals",
-    solution: "Sur-mesure métier",
+    problem: "Outils génériques",
+    solution: "Solutions sur mesure",
     description:
-      "Vos équipes bricolent avec des outils pensés pour tout le monde. On conçoit un site, une app ou un réseau taillé pour votre métier.",
+      "Des logiciels standard qui ne s'alignent pas sur vos processus. Nous concevons des sites web, applications et plateformes digitales taillés pour votre secteur, vos usages et vos objectifs stratégiques.",
     icon: Handshake,
     gradient: "from-glacier via-[#9CD1E0] to-glacier-dark",
     glowColor: "rgba(168, 213, 226, 0.25)",
   },
   {
-    problem: "Peur des pannes",
-    solution: "Surveillance 24/7",
+    problem: "Risques d'incidents",
+    solution: "Surveillance proactive",
     description:
-      "Une panne et tout s'arrête. On surveille, on sécurise et on vous prévient avant que le client ne le fasse.",
+      "Une interruption peut impacter votre activité et votre réputation. Nous mettons en place une surveillance continue, des alertes et des procédures de sécurisation pour anticiper les incidents avant qu'ils n'impactent vos clients.",
     icon: Eye,
     gradient: "from-[#B4E4CE] via-[#A0D4B8] to-[#8FC4A8]",
     glowColor: "rgba(180, 228, 206, 0.25)",
   },
   {
-    problem: "Budget qui explose",
-    solution: "Coûts optimisés",
+    problem: "Coûts incontrôlés",
+    solution: "Maîtrise budgétaire",
     description:
-      "Licences, serveurs, prestas… ça s'empile. On coupe le gras et on garde ce qui crée vraiment de la valeur.",
+      "Abonnements multiples, infrastructures sous-optimisées et prestations dispersées alourdissent la facture. Nous rationalisons vos dépenses numériques et concentrons les investissements sur ce qui génère une réelle valeur pour votre entreprise.",
     icon: Wallet,
     gradient: "from-peach via-[#F0C8A0] to-peach-dark",
     glowColor: "rgba(245, 213, 184, 0.25)",
   },
   {
-    problem: "Projets en retard",
-    solution: "Livraison rapide",
+    problem: "Délais qui s'accumulent",
+    solution: "Livraison dans les temps",
     description:
-      "Specs qui changent, planning qui dérape. On vous aide à sortir vos projets vite, proprement et sans rework.",
+      "Les changements de périmètre et les retards en chaîne pénalisent vos projets. Nous appliquons une méthodologie structurée, des jalons clairs et une communication régulière pour livrer vos projets à l'échéance prévue, sans compromis sur la qualité.",
     icon: Clock,
     gradient: "from-[#D4C5F9] via-[#C4B5E8] to-[#B4A5D8]",
     glowColor: "rgba(212, 197, 249, 0.25)",
@@ -65,7 +65,7 @@ const ValueCard = memo(function ValueCard({
   return (
     <motion.div
       variants={fadeInUp}
-      transition={{ duration: 0.4, ease: "easeOut" }}
+      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as const }}
       className="group relative"
     >
       <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-glacier/20 bg-white/80 p-6 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-glacier/40 hover:shadow-lg sm:p-8">
@@ -103,7 +103,7 @@ function ValueSection() {
   return (
     <section
       id="valeur"
-      className="relative scroll-mt-20 overflow-hidden border-t border-glacier/20 bg-gradient-to-b from-white via-[#FEFDFB] to-white py-20 sm:py-24 lg:py-32"
+      className="relative scroll-mt-20 overflow-hidden border-t border-glacier/20 bg-gradient-to-b from-white via-[#FEFDFB] to-white py-14 sm:py-24 lg:py-32"
     >
       {/* Background - CSS simple */}
       <div className="pointer-events-none absolute inset-0">
@@ -111,7 +111,7 @@ function ValueSection() {
         <div className="animate-pulse-slow animation-delay-2000 absolute bottom-[10%] right-[15%] h-[350px] w-[350px] rounded-full bg-peach/15 blur-[120px]" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -121,14 +121,13 @@ function ValueSection() {
           className="mb-16 text-center lg:mb-20"
         >
           <h2 className="font-display text-[clamp(1.75rem,4vw+0.5rem,3rem)] font-normal leading-[1.15] tracking-tight text-foreground">
-            Vous vivez ça.{" "}
+            Vos enjeux.{" "}
             <span className="bg-gradient-to-r from-glacier-dark via-glacier to-peach bg-clip-text text-transparent">
-              On le résout.
+              Notre expertise.
             </span>
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg">
-            Projets qui glissent, pannes au pire moment, prestas qui disparaissent.
-            ZUKUNFT TECH transforme ce chaos en système qui tient debout.
+            Retards, risques techniques et coûts qui s&apos;envolent : des défis que nous connaissons. ZUKUNFT TECH vous accompagne pour construire une infrastructure digitale fiable, maîtrisée et alignée sur vos objectifs.
           </p>
         </motion.div>
 
@@ -154,13 +153,13 @@ function ValueSection() {
           className="mt-14 text-center lg:mt-16"
         >
           <p className="text-sm text-zinc-500">
-            Prêt à transformer vos frustrations en solutions ?
+            Vous souhaitez structurer votre digital et sécuriser vos projets ?
           </p>
           <a
             href="#contact"
             className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-glacier-dark transition-colors hover:text-glacier"
           >
-            Discutons de votre projet
+            Échangeons sur vos besoins
             <ArrowRight className="h-4 w-4" />
           </a>
         </motion.div>

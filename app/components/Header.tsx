@@ -10,10 +10,10 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-b-brand bg-white/90 backdrop-blur-xl shadow-sm pt-[env(safe-area-inset-top)]">
-      <div className="mx-auto flex h-14 min-h-[56px] max-w-6xl items-center justify-between gap-4 px-4 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:h-16 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-14 min-h-[56px] max-w-6xl items-center justify-between gap-3 px-4 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:h-16 sm:gap-4 sm:px-6 lg:px-8">
         <Link
           href="#"
-          className="hover-link font-display text-xl tracking-normal text-foreground hover:text-glacier-dark sm:text-2xl"
+          className="hover-link font-display text-lg tracking-normal text-foreground hover:text-glacier-dark min-[375px]:text-xl sm:text-2xl"
           aria-label="ZUKUNFT TECH — Accueil"
         >
           ZUKUNFT TECH
