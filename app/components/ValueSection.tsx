@@ -86,7 +86,7 @@ const ValueCard = memo(function ValueCard({
         </div>
 
         {/* Description */}
-        <p className="flex-1 text-sm leading-relaxed text-zinc-700 sm:text-base">
+        <p className="flex-1 text-sm leading-relaxed text-zinc-700 sm:text-base comment">
           {prop.description}
         </p>
 
@@ -126,7 +126,7 @@ function ValueSection() {
               Notre expertise.
             </span>
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg">
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg comment">
             Retards, risques techniques et coûts qui s&apos;envolent : des défis que nous connaissons. ZUKUNFT TECH vous accompagne pour construire une infrastructure digitale fiable, maîtrisée et alignée sur vos objectifs.
           </p>
         </motion.div>

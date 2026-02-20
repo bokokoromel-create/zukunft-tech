@@ -105,7 +105,7 @@ function AboutSection() {
             <motion.h2 variants={fadeInUp} className="text-section text-title-gradient mt-5">
               Une équipe qui tient la route quand tout s&apos;accélère.
             </motion.h2>
-            <motion.p variants={fadeInUp} className="mt-4 leading-relaxed text-zinc-600">
+            <motion.p variants={fadeInUp} className="mt-4 leading-relaxed text-zinc-600 comment">
               La plupart de nos clients arrivent après une première expérience compliquée :
               retards, promesses vagues, personne quand ça casse. Avec ZUKUNFT TECH, vous avez
               des interlocuteurs identifiés, des décisions claires et une technique qui suit sans drama.

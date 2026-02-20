@@ -100,7 +100,7 @@ export default function ContactSection() {
               <h2 className="text-section text-foreground">
                 Contact
               </h2>
-              <p className="mt-4 max-w-sm leading-relaxed text-zinc-600">
+              <p className="mt-4 max-w-sm leading-relaxed text-zinc-600 comment">
                 Un projet, une question ? Écrivez-nous. L&apos;équipe vous répond
                 rapidement et en toute simplicité.
               </p>

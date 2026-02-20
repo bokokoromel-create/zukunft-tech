@@ -174,7 +174,7 @@ function PortfolioSection() {
               Réalisations
             </span>
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg">
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg comment">
             Des solutions concrètes pour des défis complexes.
           </p>
         </motion.div>

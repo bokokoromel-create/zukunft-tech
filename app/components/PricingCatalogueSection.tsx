@@ -89,7 +89,7 @@ export default function PricingCatalogueSection() {
           <h2 className="text-section text-title-gradient">
             Des offres claires et adaptées.
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-zinc-600">
+          <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-zinc-600 comment">
             Investissez dans la sérénité et la croissance.
           </p>
         </motion.div>
@@ -102,7 +102,7 @@ export default function PricingCatalogueSection() {
           className="grid gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-7"
         >
           {packs.map((pack) => (
-            <motion.article
+            <motion.div
               key={pack.id}
               variants={cardReveal}
               className={`relative flex flex-col rounded-2xl p-6 transition-all duration-300 ease-out hover:-translate-y-2 ${
@@ -145,7 +145,7 @@ export default function PricingCatalogueSection() {
                 {pack.cta}
                 <ChevronRight className={`h-4 w-4 ${pack.highlighted ? "text-white" : "text-glacier-dark"}`} aria-hidden />
               </Link>
-            </motion.article>
+            </motion.div>
           ))}
         </motion.div>
       </div>

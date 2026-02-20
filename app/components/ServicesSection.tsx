@@ -66,7 +66,7 @@ const ServiceCard = memo(function ServiceCard({
   const Icon = offering.icon;
   
   return (
-    <motion.article
+    <motion.div
       variants={fadeInUp}
       className="group relative overflow-hidden rounded-2xl border border-glacier/20 bg-white/90 p-6 shadow-sm backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:border-glacier/40 hover:shadow-md"
     >
@@ -89,7 +89,7 @@ const ServiceCard = memo(function ServiceCard({
           );
         })}
       </ul>
-    </motion.article>
+    </motion.div>
   );
 });
 
@@ -108,7 +108,7 @@ function ServicesSection() {
           className="mb-12 text-center"
         >
           <h2 className="text-section text-foreground">Nos services</h2>
-          <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-zinc-600">
+          <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-zinc-600 comment">
             Du dev à la sécurité : tout sous un même toit.
           </p>
         </motion.div>
