@@ -25,20 +25,20 @@ const contactInfos = [
   {
     icon: Mail,
     label: "Email",
-    value: "contact@zukunft-tech.com",
-    href: "mailto:contact@zukunft-tech.com",
+    value: "Zukunfttechcongo@gmail.com",
+    href: "mailto:Zukunfttechcongo@gmail.com",
   },
   {
     icon: Phone,
     label: "Téléphone",
-    value: "+33 1 23 45 67 89",
-    href: "tel:+33123456789",
+    value: "+242 065 443 258",
+    href: "tel:+242065443258",
   },
   {
     icon: MapPin,
     label: "Adresse",
-    value: "France",
-    href: "#",
+    value: "Brazzaville, Congo",
+    href: "https://maps.google.com/?q=Brazzaville,Congo",
   },
 ];
 

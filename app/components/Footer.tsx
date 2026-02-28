@@ -23,15 +23,15 @@ export default function Footer() {
             </p>
             <div className="mt-4 flex flex-col gap-2 text-sm text-zinc-600">
               <a
-                href="mailto:contact@zukunft-tech.com"
+                href="mailto:Zukunfttechcongo@gmail.com"
                 className="hover-link inline-flex min-h-[44px] items-center gap-2 hover:text-glacier-dark"
               >
                 <Mail className="h-4 w-4 shrink-0" aria-hidden />
-                contact@zukunft-tech.com
+                Zukunfttechcongo@gmail.com
               </a>
               <span className="inline-flex items-center gap-2">
                 <MapPin className="h-4 w-4 shrink-0 text-glacier-dark" aria-hidden />
-                France
+                Brazzaville, Congo
               </span>
             </div>
           </div>
