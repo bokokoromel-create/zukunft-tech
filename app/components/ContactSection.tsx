@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import { CheckCircle2, Loader2, Mail, MapPin, Phone, Send } from "lucide-react";
 
 const sectionStagger = {
@@ -83,12 +83,13 @@ export default function ContactSection() {
   }
 
   return (
+    <LazyMotion features={domAnimation} strict>
     <section
       id="contact"
       className="relative scroll-mt-20 border-t border-glacier/20 bg-gradient-to-b from-white via-[#FEFDFB] to-white py-16 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-6xl px-4 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:px-6 lg:px-8">
-        <motion.div
+        <m.div
           variants={sectionStagger}
           initial="hidden"
           whileInView="visible"
@@ -96,7 +97,7 @@ export default function ContactSection() {
           className="lg:grid lg:grid-cols-12 lg:gap-12 lg:items-start"
         >
           <div className="lg:col-span-5 lg:sticky lg:top-24">
-            <motion.div variants={sectionItem} className="mb-10 lg:mb-12">
+            <m.div variants={sectionItem} className="mb-10 lg:mb-12">
               <h2 className="text-section text-foreground">
                 Contact
               </h2>
@@ -104,9 +105,9 @@ export default function ContactSection() {
                 Un projet, une question ? Écrivez-nous. L&apos;équipe vous répond
                 rapidement et en toute simplicité.
               </p>
-            </motion.div>
+            </m.div>
 
-            <motion.div variants={sectionItem} className="space-y-4">
+            <m.div variants={sectionItem} className="space-y-4">
               {contactInfos.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -129,10 +130,10 @@ export default function ContactSection() {
                   </a>
                 );
               })}
-            </motion.div>
+            </m.div>
           </div>
 
-          <motion.div
+          <m.div
             variants={sectionItem}
             className="mt-12 flex justify-center lg:col-span-7 lg:mt-0"
           >
@@ -226,9 +227,10 @@ export default function ContactSection() {
                 </div>
               </div>
             </form>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

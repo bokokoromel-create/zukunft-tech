@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView, useMotionValue, animate, useMotionValueEvent } from "framer-motion";
+import { LazyMotion, domAnimation, m, useInView, useMotionValue, animate, useMotionValueEvent } from "framer-motion";
 import { useRef, useEffect, useState, memo } from "react";
 
 const fadeInUp = {
@@ -59,13 +59,14 @@ const AnimatedCounter = memo(function AnimatedCounter({
 
 function AboutSection() {
   return (
+    <LazyMotion features={domAnimation} strict>
     <section
       id="a-propos"
       className="relative scroll-mt-20 overflow-hidden border-t border-glacier/20 bg-gradient-to-b from-white via-[#FEFDFB] to-white py-16 sm:py-20 lg:py-24"
     >
       <div className="relative z-10 mx-auto max-w-6xl px-4 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-10 sm:gap-12 lg:grid-cols-2 lg:gap-16">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-60px" }}
@@ -90,9 +91,9 @@ function AboutSection() {
               className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_70%_at_50%_50%,rgb(168_213_226/0.15),transparent_60%)]"
               aria-hidden
             />
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             variants={stagger}
             initial="hidden"
             whileInView="visible"
@@ -102,16 +103,16 @@ function AboutSection() {
             <span className="inline-block text-xs font-medium tracking-widest uppercase text-glacier-dark">
               Pourquoi ils nous choisissent
             </span>
-            <motion.h2 variants={fadeInUp} className="text-section text-title-gradient mt-5">
+            <m.h2 variants={fadeInUp} className="text-section text-title-gradient mt-5">
               Une équipe qui tient la route quand tout s&apos;accélère.
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="mt-4 leading-relaxed text-zinc-600 comment">
+            </m.h2>
+            <m.p variants={fadeInUp} className="mt-4 leading-relaxed text-zinc-600 comment">
               La plupart de nos clients arrivent après une première expérience compliquée :
               retards, promesses vagues, personne quand ça casse. Avec ZUKUNFT TECH, vous avez
               des interlocuteurs identifiés, des décisions claires et une technique qui suit sans drama.
-            </motion.p>
+            </m.p>
 
-            <motion.div
+            <m.div
               variants={fadeInUp}
               className="mt-10 grid grid-cols-1 gap-8 border-t border-glacier/20 pt-10 md:grid-cols-2 lg:grid-cols-3"
             >
@@ -136,11 +137,12 @@ function AboutSection() {
                 duration={1.5}
                 staggerDelay={0.2}
               />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }
 

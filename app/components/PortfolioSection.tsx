@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { memo, useState, useCallback } from "react";
@@ -67,7 +67,7 @@ const ProjectCard = memo(function ProjectCard({
   const handleMouseLeave = useCallback(() => setIsHovered(false), []);
 
   return (
-    <motion.article
+    <m.article
       variants={fadeInUp}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -146,12 +146,13 @@ const ProjectCard = memo(function ProjectCard({
           }`}
         />
       </div>
-    </motion.article>
+    </m.article>
   );
 });
 
 function PortfolioSection() {
   return (
+    <LazyMotion features={domAnimation} strict>
     <section
       id="portfolio"
       className="relative scroll-mt-20 overflow-hidden border-t border-glacier/20 bg-gradient-to-b from-white via-[#FEFDFB] to-white py-16 sm:py-24 lg:py-32"
@@ -161,7 +162,7 @@ function PortfolioSection() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:px-6 lg:px-8">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
@@ -177,9 +178,9 @@ function PortfolioSection() {
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg comment">
             Des solutions concrètes pour des défis complexes.
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           variants={stagger}
           initial="hidden"
           whileInView="visible"
@@ -189,9 +190,9 @@ function PortfolioSection() {
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -208,9 +209,10 @@ function PortfolioSection() {
             <span>Voir plus de projets</span>
             <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </a>
-        </motion.div>
+        </m.div>
       </div>
     </section>
+    </LazyMotion>
   );
 }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import {
   Cloud,
   Headphones,
@@ -66,7 +66,7 @@ const ServiceCard = memo(function ServiceCard({
   const Icon = offering.icon;
   
   return (
-    <motion.div
+    <m.div
       variants={fadeInUp}
       className="group relative overflow-hidden rounded-2xl border border-glacier/20 bg-white/90 p-6 shadow-sm backdrop-blur-sm transition-all duration-200 hover:-translate-y-1 hover:border-glacier/40 hover:shadow-md"
     >
@@ -89,18 +89,19 @@ const ServiceCard = memo(function ServiceCard({
           );
         })}
       </ul>
-    </motion.div>
+    </m.div>
   );
 });
 
 function ServicesSection() {
   return (
+    <LazyMotion features={domAnimation} strict>
     <section
       id="services"
       className="relative scroll-mt-20 border-t border-glacier/20 bg-gradient-to-b from-white via-[#FEFDFB] to-white py-16 sm:py-20 lg:py-24"
     >
       <div className="mx-auto max-w-6xl px-4 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:px-6 lg:px-8">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
@@ -111,9 +112,9 @@ function ServicesSection() {
           <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-zinc-600 comment">
             Du dev à la sécurité : tout sous un même toit.
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           variants={stagger}
           initial="hidden"
           whileInView="visible"
@@ -123,9 +124,10 @@ function ServicesSection() {
           {serviceOfferings.map((offering) => (
             <ServiceCard key={offering.title} offering={offering} />
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
+    </LazyMotion>
   );
 }
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import { ArrowRight, Clock, Eye, Handshake, Wallet } from "lucide-react";
 import { memo } from "react";
 
@@ -63,7 +63,7 @@ const ValueCard = memo(function ValueCard({
   const Icon = prop.icon;
   
   return (
-    <motion.div
+    <m.div
       variants={fadeInUp}
       transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] as const }}
       className="group relative"
@@ -95,12 +95,13 @@ const ValueCard = memo(function ValueCard({
           className={`mt-6 h-1 w-[30%] rounded-full bg-gradient-to-r ${prop.gradient} transition-all duration-500 group-hover:w-[50%]`}
         />
       </div>
-    </motion.div>
+    </m.div>
   );
 });
 
 function ValueSection() {
   return (
+    <LazyMotion features={domAnimation} strict>
     <section
       id="valeur"
       className="relative scroll-mt-20 overflow-hidden border-t border-glacier/20 bg-gradient-to-b from-white via-[#FEFDFB] to-white py-14 sm:py-24 lg:py-32"
@@ -113,7 +114,7 @@ function ValueSection() {
 
         <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))]">
         {/* Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
@@ -129,10 +130,10 @@ function ValueSection() {
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-zinc-600 sm:text-lg comment">
             Retards, risques techniques et coûts qui s&apos;envolent : des défis que nous connaissons. ZUKUNFT TECH vous accompagne pour construire une infrastructure digitale fiable, maîtrisée et alignée sur vos objectifs.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Cards Grid */}
-        <motion.div
+        <m.div
           variants={stagger}
           initial="hidden"
           whileInView="visible"
@@ -142,10 +143,10 @@ function ValueSection() {
           {valueProps.map((prop, i) => (
             <ValueCard key={prop.problem} prop={prop} index={i} />
           ))}
-        </motion.div>
+        </m.div>
 
         {/* Bottom CTA */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -162,9 +163,10 @@ function ValueSection() {
             Échangeons sur vos besoins
             <ArrowRight className="h-4 w-4" />
           </a>
-        </motion.div>
+        </m.div>
       </div>
     </section>
+    </LazyMotion>
   );
 }
 

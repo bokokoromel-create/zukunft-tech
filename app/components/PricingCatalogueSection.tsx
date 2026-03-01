@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { LazyMotion, domAnimation, m } from "framer-motion";
 import { Check, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
@@ -74,12 +74,13 @@ const cardReveal = {
 
 export default function PricingCatalogueSection() {
   return (
+    <LazyMotion features={domAnimation} strict>
     <section
       id="tarifs"
       className="relative scroll-mt-20 border-t border-glacier/20 bg-gradient-to-b from-white via-[#FEFDFB] to-white py-16 sm:py-20 lg:py-24"
     >
       <div className="relative z-10 mx-auto max-w-6xl px-4 pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:px-6 lg:px-8">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
@@ -92,9 +93,9 @@ export default function PricingCatalogueSection() {
           <p className="mx-auto mt-4 max-w-2xl leading-relaxed text-zinc-600 comment">
             Investissez dans la sérénité et la croissance.
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           variants={gridStagger}
           initial="hidden"
           whileInView="visible"
@@ -102,7 +103,7 @@ export default function PricingCatalogueSection() {
           className="grid gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-7"
         >
           {packs.map((pack) => (
-            <motion.div
+            <m.div
               key={pack.id}
               variants={cardReveal}
               className={`relative flex flex-col rounded-2xl p-6 transition-all duration-300 ease-out hover:-translate-y-2 ${
@@ -145,10 +146,11 @@ export default function PricingCatalogueSection() {
                 {pack.cta}
                 <ChevronRight className={`h-4 w-4 ${pack.highlighted ? "text-white" : "text-glacier-dark"}`} aria-hidden />
               </Link>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
+    </LazyMotion>
   );
 }
